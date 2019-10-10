@@ -1,3 +1,5 @@
+// Class 'Player'
+
 import java.io.Serializable;
 
 abstract class Player implements Serializable {
