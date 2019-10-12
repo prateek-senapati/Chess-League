@@ -36,20 +36,4 @@ public class ChessPlayer extends Player {
         else
             System.out.print("No");
     }
-
-    /*public static void main (String[] args) throws IOException, ClassNotFoundException {
-
-        ChessPlayer playerInput = new ChessPlayer();
-        playerInput.setData();
-        FileOutputStream FOS = new FileOutputStream("chess-league.ser");
-        ObjectOutputStream OOS = new ObjectOutputStream(FOS);
-        OOS.writeObject(playerInput);
-        OOS.close();
-
-        FileInputStream FIS = new FileInputStream("chess-league.ser");
-        ObjectInputStream OIS = new ObjectInputStream(FIS);
-        ChessPlayer playerOutput = (ChessPlayer) OIS.readObject();
-        OIS.close();
-        playerOutput.getData();
-    }*/
 }
