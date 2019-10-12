@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.io.*;
 
 public class ChessPlayer extends Player {
 
@@ -7,6 +6,7 @@ public class ChessPlayer extends Player {
 
         char response;
         Scanner input = new Scanner(System.in);
+        System.out.println();
         System.out.print("Enter player name: ");
         name = input.nextLine();
         System.out.print("Enter student ID: ");
@@ -24,20 +24,20 @@ public class ChessPlayer extends Player {
 
     void getData () {
 
-        System.out.println();
+        System.out.println("\n");
         System.out.println("Name: " + name);
         System.out.println("Student ID: " + studentID);
         System.out.println("Contact Number: " + contactNumber);
         System.out.println("Email ID: " + emailID);
         System.out.println("Mode of Payment: " + modeOfPayment);
-        System.out.println("Registration fee paid?    ");
+        System.out.print("Registration fee paid?    ");
         if(paid)
             System.out.print("Yes");
         else
-            System.out.println("No");
+            System.out.print("No");
     }
 
-    public static void main (String[] args) throws IOException, ClassNotFoundException {
+    /*public static void main (String[] args) throws IOException, ClassNotFoundException {
 
         ChessPlayer playerInput = new ChessPlayer();
         playerInput.setData();
@@ -51,5 +51,5 @@ public class ChessPlayer extends Player {
         ChessPlayer playerOutput = (ChessPlayer) OIS.readObject();
         OIS.close();
         playerOutput.getData();
-    }
+    }*/
 }
