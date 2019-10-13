@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ChessPlayer extends Player {
+class ChessPlayer extends Player {
 
     void setData () {
 
@@ -25,6 +25,7 @@ public class ChessPlayer extends Player {
     void getData () {
 
         System.out.println("\n");
+        System.out.println("Serial Number: " + serialNumber);
         System.out.println("Name: " + name);
         System.out.println("Student ID: " + studentID);
         System.out.println("Contact Number: " + contactNumber);
