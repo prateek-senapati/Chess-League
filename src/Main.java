@@ -15,23 +15,39 @@ public class Main {
     }
 
     private void saveDetails () throws IOException {
-
-        FileOutputStream FOS = new FileOutputStream("chess-league.txt");
-        ObjectOutputStream OOS = new ObjectOutputStream(FOS);
-        OOS.writeObject(chessPlayers);
-        OOS.close();
+        try {
+        	FileOutputStream FOS = new FileOutputStream("chess-league.txt");
+        	ObjectOutputStream OOS = new ObjectOutputStream(FOS);
+        	OOS.writeObject(chessPlayers);
+	}
+	catch( IOException e ) {
+		e.printStackTrace();
+	}
+	finally {
+		OOS.close();
+	}
     }
 
     private void showPlayers () throws IOException, ClassNotFoundException {
-
-        FileInputStream FIS = new FileInputStream("chess-league.txt");
-        ObjectInputStream OIS = new ObjectInputStream(FIS);
-        @SuppressWarnings("unchecked")
-        ArrayList<ChessPlayer> playerOutput = (ArrayList<ChessPlayer>) OIS.readObject();
-        for(ChessPlayer item : playerOutput) {
-            item.getData();
-        }
-        OIS.close();
+	try {
+        	FileInputStream FIS = new FileInputStream("chess-league.txt");
+        	ObjectInputStream OIS = new ObjectInputStream(FIS);
+        	@SuppressWarnings("unchecked")
+        	ArrayList<ChessPlayer> playerOutput = (ArrayList<ChessPlayer>) OIS.readObject();
+        	for(ChessPlayer item : playerOutput) {
+            		item.getData();
+        	}
+	}
+		catch(ClassNotFoundException e) {
+			e.printStackTrace(); 
+		}
+	}
+	catch(IOException e) {
+		e.printStackTrace();
+	}
+	finally {
+        	OIS.close();
+	}
     }
 
     private void editPlayerDetails (int serialNumber) {
@@ -48,31 +64,32 @@ public class Main {
 
         Main obj = new Main();
         int choice, serialNumber;
-        Scanner input = new Scanner(System.in);
-        do {
-            System.out.println("\n\nMENU:\n");
-            System.out.println("(1) Add a player");
-            System.out.println("(2) Show registered players");
-            System.out.println("(3) Edit/Update registered players");
-            System.out.println("(4) Exit");
-            System.out.print("\n\nEnter your choice: ");
-            choice = input.nextInt();
-            switch (choice) {
-                case 1: obj.addPlayer();
-                        obj.saveDetails();
-                        break;
-                case 2: try {
-                            obj.showPlayers();
-                        } catch (ClassNotFoundException e) {
-                            e.printStackTrace();
+	try {
+        	Scanner input = new Scanner(System.in);
+        	do {
+           	 System.out.println("\n\nMENU:\n");
+            	System.out.println("(1) Add a player");
+            	System.out.println("(2) Show registered players");
+            	System.out.println("(3) Edit/Update registered players");
+            	System.out.println("(4) Exit");
+            	System.out.print("\n\nEnter your choice: ");
+            	choice = input.nextInt();
+            	switch (choice) {
+                	case 1: obj.addPlayer();
+                        	obj.saveDetails();
+                        	break;
+                	case 2: try {
+                            	obj.showPlayers();
+                        	} catch (ClassNotFoundException e) {
+                            	e.printStackTrace();
                         }
-                        break;
-                case 3: System.out.print("Enter serial number of the player: ");
-                        serialNumber = input.nextInt();
-                        obj.editPlayerDetails(serialNumber);
-                        obj.saveDetails();
-                        break;
-            }
-        } while (choice != 4);
-    }
+                        	break;
+                	case 3: System.out.print("Enter serial number of the player: ");
+                        	serialNumber = input.nextInt();
+                        	obj.editPlayerDetails(serialNumber);
+                        	obj.saveDetails();
+                        	break;
+            	}
+       	   } while (choice != 4);
+    	}
 }
