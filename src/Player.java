@@ -2,10 +2,10 @@ import java.io.Serializable;
 
 abstract class Player implements Serializable {
 
-        int serialNumber;
-        String name, contactNumber, emailID, modeOfPayment, studentID;
-        boolean paid;
+    int serialNumber;
+    String name, contactNumber, emailID, modeOfPayment, studentID;
+    boolean paid;
 
-        abstract void setData ();
-        abstract void getData ();
+    abstract void setDetails ();
+    abstract void getDetails ();
 }
