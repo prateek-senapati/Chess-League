@@ -2,12 +2,17 @@ import java.util.Scanner;
 
 class ChessPlayer extends Player {
 
-    void setData () {
+    ChessPlayer () {
 
-        char response;
+        serialNumber = 0;
+        name = contactNumber = emailID = modeOfPayment = studentID = "TBD";
+    }
+
+    void setDetails () {
+
+        String response;
         Scanner input = new Scanner(System.in);
-        System.out.println();
-        System.out.print("Enter player name: ");
+        System.out.print("\nEnter player name: ");
         name = input.nextLine();
         System.out.print("Enter student ID: ");
         studentID = input.nextLine();
@@ -15,24 +20,22 @@ class ChessPlayer extends Player {
         contactNumber = input.nextLine();
         System.out.print("Enter email ID: ");
         emailID = input.nextLine();
-        System.out.print("Enter mode of payment: ");
+        System.out.print("Enter mode of payment (Cash/GPay/PayTM): ");
         modeOfPayment = input.nextLine();
-        System.out.print("Did the player pay the registration fee? (Y/N): ");
-        response = input.next().charAt(0);
-        paid = (response == 'Y');
+        System.out.print("Did the player pay the registration fee? (y/n) or (yes/no): ");
+        response = input.nextLine();
+        paid = (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y"));
     }
 
-    void getData () {
+    void getDetails () {
 
-        System.out.println("\n");
-        System.out.println("Serial Number: " + serialNumber);
-        System.out.println("Name: " + name);
-        System.out.println("Student ID: " + studentID);
-        System.out.println("Contact Number: " + contactNumber);
-        System.out.println("Email ID: " + emailID);
-        System.out.println("Mode of Payment: " + modeOfPayment);
-        System.out.print("Registration fee paid?    ");
-        if(paid)
+        System.out.print("\n\n\t\t" + serialNumber + "\t\t");
+        System.out.print(name + "\t\t");
+        System.out.print(studentID + "\t\t");
+        System.out.print(contactNumber + "\t\t");
+        System.out.print(emailID + "\t\t");
+        System.out.print(modeOfPayment + "\t\t");
+        if (paid)
             System.out.print("Yes");
         else
             System.out.print("No");
