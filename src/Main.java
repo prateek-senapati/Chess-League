@@ -13,10 +13,10 @@ public class Main {
     // method to initialize the list of chess players with already stored data (if the file already exists)
     private void setChessPlayers () throws IOException, ClassNotFoundException {
 
-        File file = new File("chess-11.txt");
+        File file = new File("chess-21.txt");
         if (file.exists())
         {
-            FileInputStream FIS = new FileInputStream("chess-11.txt");
+            FileInputStream FIS = new FileInputStream("chess-21.txt");
             ObjectInputStream OIS = new ObjectInputStream(FIS);
             @SuppressWarnings("unchecked")
             ArrayList<ChessPlayer> playersOutput = (ArrayList<ChessPlayer>) OIS.readObject();
@@ -38,7 +38,7 @@ public class Main {
     // method to save the list of registered players in a file
     private void saveDetails () throws IOException {
 
-        FileOutputStream FOS = new FileOutputStream("chess-11.txt");
+        FileOutputStream FOS = new FileOutputStream("chess-21.txt");
         ObjectOutputStream OOS = new ObjectOutputStream(FOS);
         OOS.writeObject(chessPlayers);
         OOS.close();
@@ -310,7 +310,8 @@ public class Main {
             }
         } while (choice != 11);
     }
-    
+
+    // method to invoke the Fixtures and Points Table Page
     private void fixturesAndPointsTablePage () {
 
         int choice;
