@@ -8,6 +8,7 @@ class ChessPlayer extends Player {
         name = contactNumber = emailID = modeOfPayment = studentID = "TBD";
     }
 
+    // method to set individual player's registration details
     void setDetails () {
 
         String response;
@@ -27,17 +28,19 @@ class ChessPlayer extends Player {
         paid = (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y"));
     }
 
+    // method to print individual player's registration details
     void getDetails () {
 
-        System.out.print("\n\n\t\t" + serialNumber + "\t\t");
-        System.out.print(name + "\t\t");
-        System.out.print(studentID + "\t\t");
-        System.out.print(contactNumber + "\t\t");
-        System.out.print(emailID + "\t\t");
-        System.out.print(modeOfPayment + "\t\t");
+        System.out.println();
+        System.out.print(String.format("%20s", serialNumber));
+        System.out.print(String.format("%25s", name));
+        System.out.print(String.format("%20s", studentID));
+        System.out.print(String.format("%20s", contactNumber));
+        System.out.print(String.format("%30s", emailID));
+        System.out.print(String.format("%20s", modeOfPayment));
         if (paid)
-            System.out.print("Yes");
+            System.out.print("\t\t\t\tYes");
         else
-            System.out.print("No");
+            System.out.print("\t\t\t\tNo");
     }
 }
