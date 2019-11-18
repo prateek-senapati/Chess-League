@@ -14,20 +14,33 @@ class Table implements Serializable, Comparable<Table> {
         playerName = playerID = "TBD";
     }
 
+    // method to return individual player's points
     private Integer getPoints () { return points; }
 
+    // method to compare two players based on their points
     @Override
     public int compareTo (Table t) {
 
         return this.getPoints().compareTo(t.getPoints());
     }
 
+    // method to print points table details of the league winner
     void getLeagueWinner () throws IOException, ClassNotFoundException {
 
-        File file = new File("table-6.txt");
+        File file = new File("table-11.txt");
         if (file.exists())
         {
-            FileInputStream FIS = new FileInputStream("table-6.txt");
+            System.out.println();
+            System.out.print(String.format("%10s", "Position"));
+            System.out.print(String.format("%25s", "Player Name"));
+            System.out.print(String.format("%15s", "Student ID"));
+            System.out.print(String.format("%10s", "Played"));
+            System.out.print(String.format("%10s", "Won"));
+            System.out.print(String.format("%10s", "Lost"));
+            System.out.print(String.format("%10s", "Drawn"));
+            System.out.print(String.format("%10s", "Points"));
+            System.out.println();
+            FileInputStream FIS = new FileInputStream("table-11.txt");
             ObjectInputStream OIS = new ObjectInputStream(FIS);
             @SuppressWarnings("unchecked")
             ArrayList<Table> tableOutput = (ArrayList<Table>) OIS.readObject();
@@ -35,39 +48,42 @@ class Table implements Serializable, Comparable<Table> {
             OIS.close();
         }
         else
-            System.out.println("\nFile does not exist. Please add a player first.");
+            System.out.println("\n\nFile does not exist. Please add a player first.");
     }
 
+    // method to print individual player's points table details
     private void getPlayerStats () {
 
-        System.out.println("\nPosition: " + position);
-        System.out.println("Player Name: " + playerName);
-        System.out.println("Player Student ID: " + playerID);
-        System.out.println("Matches played: " + played);
-        System.out.println("Matches won: " + won);
-        System.out.println("Matches lost: " + lost);
-        System.out.println("Matches drawn: " + drawn);
-        System.out.println("Points: " + points);
+        System.out.println();
+        System.out.print(String.format("%10s", position));
+        System.out.print(String.format("%25s", playerName));
+        System.out.print(String.format("%15s", playerID));
+        System.out.print(String.format("%10s", played));
+        System.out.print(String.format("%10s", won));
+        System.out.print(String.format("%10s", lost));
+        System.out.print(String.format("%10s", drawn));
+        System.out.print(String.format("%10s", points));
     }
 
+    // method to save points table in a file
     private void saveTable () throws IOException {
 
-        FileOutputStream FOS = new FileOutputStream("table-6.txt");
+        FileOutputStream FOS = new FileOutputStream("table-11.txt");
         ObjectOutputStream OOS = new ObjectOutputStream(FOS);
         OOS.writeObject(table);
         OOS.close();
     }
 
+    // method to generate points table
     void generateTable () throws IOException, ClassNotFoundException {
 
-        File file = new File("chess-6.txt");
+        File file = new File("chess-11.txt");
         if (file.exists())
         {
-            FileInputStream FIS = new FileInputStream("chess-6.txt");
+            FileInputStream FIS = new FileInputStream("chess-11.txt");
             ObjectInputStream OIS = new ObjectInputStream(FIS);
             @SuppressWarnings("unchecked")
             ArrayList<ChessPlayer> playersOutput = (ArrayList<ChessPlayer>) OIS.readObject();
-            // your code here
             for (ChessPlayer item : playersOutput) {
                 Table obj = new Table();
                 obj.playerName = item.name;
@@ -75,19 +91,32 @@ class Table implements Serializable, Comparable<Table> {
                 table.add(obj);
             }
             for (int i = 0; i < table.size(); ++i)
-                table.get(i).position = i + 1;
+                table.get(i).position = i + 1;  // sets initial positions of players in the points table
             saveTable();
         }
         else
-            System.out.println("\nFile does not exist. Please add a player first.");
+            System.out.println("\n\nFile does not exist. Please add a player first.");
     }
 
+    // method to print points table
     void showTable () throws IOException, ClassNotFoundException {
 
-        File file = new File("table-6.txt");
+        File file = new File("table-11.txt");
         if (file.exists())
         {
-            FileInputStream FIS = new FileInputStream("table-6.txt");
+            System.out.println();
+            System.out.println();
+            System.out.print(String.format("%10s", "Position"));
+            System.out.print(String.format("%25s", "Player Name"));
+            System.out.print(String.format("%15s", "Student ID"));
+            System.out.print(String.format("%10s", "Played"));
+            System.out.print(String.format("%10s", "Won"));
+            System.out.print(String.format("%10s", "Lost"));
+            System.out.print(String.format("%10s", "Drawn"));
+            System.out.print(String.format("%10s", "Points"));
+            System.out.println();
+            System.out.println();
+            FileInputStream FIS = new FileInputStream("table-11.txt");
             ObjectInputStream OIS = new ObjectInputStream(FIS);
             @SuppressWarnings("unchecked")
             ArrayList<Table> tableOutput = (ArrayList<Table>) OIS.readObject();
@@ -96,22 +125,24 @@ class Table implements Serializable, Comparable<Table> {
             OIS.close();
         }
         else
-            System.out.println("\nFile does not exist. Please add a player first.");
+            System.out.println("\n\nFile does not exist. Please add a player first.");
     }
 
+    // method to update points table based on current match's result
     void updateTable (Schedule item) throws IOException, ClassNotFoundException {
 
-        File file = new File("table-6.txt");
+        File file = new File("table-11.txt");
         if (file.exists()) {
-            FileInputStream FIS = new FileInputStream("table-6.txt");
+            FileInputStream FIS = new FileInputStream("table-11.txt");
             ObjectInputStream OIS = new ObjectInputStream(FIS);
             @SuppressWarnings("unchecked")
             ArrayList<Table> tableOutput = (ArrayList<Table>) OIS.readObject();
             table = new ArrayList<>(tableOutput);
             if (table.isEmpty()) {
-                System.out.println("No player has been registered yet. Please add a player first.");
+                System.out.println("\n\nNo player has been registered yet. Please add a player first.");
                 return ;
             }
+                // the following if-else block assigns points to players
                 if (item.result.equalsIgnoreCase("black")
                         || item.result.equalsIgnoreCase("b")) {
                     for (Table object : table) {
@@ -151,13 +182,14 @@ class Table implements Serializable, Comparable<Table> {
                         }
                     }
                 }
+            // sorts the points table in decreasing order of points
             Collections.sort(table, Collections.reverseOrder());
             for (int i = 0; i < table.size(); ++i)
-                table.get(i).position = i + 1;
+                table.get(i).position = i + 1; // updates positions of players in the points table
             saveTable();
             OIS.close();
         }
         else
-            System.out.println("\nFile does not exist. Please add a player first.");
+            System.out.println("\n\nFile does not exist. Please add a player first.");
     }
 }
