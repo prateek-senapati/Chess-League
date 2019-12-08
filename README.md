@@ -1,6 +1,6 @@
 # Chess-League
 
-This __Java__ project incorporates various concepts of __Object Oriented Programming__ and can be used to conduct/organize a *__chess league__*.
+This __Java__ project incorporates various concepts of __Object Oriented Programming (OOP)__ and can be used to conduct/organize a *__Chess League__*.
 
 The system ensures random generation of fixtures in order to avoid any form of biased circumstances or unfair situations. All the registered players will play against each other in a round-robin format and after the league phase gets over, the player who tops the points table is declared the winner. A player earns 3 points for winning a match and 0 for losing a match. In case of a drawn match, 
 each player earns 1 point.
