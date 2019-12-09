@@ -20,3 +20,8 @@ The following operations/functionalities are available in this system:
 * *Updating details of fixtures*
 * *Displaying all the fixtures*
 * *Displaying the points table*
+
+### Contributors
+
+- [Harish Kumar](https://github.com/harishsuthar11)
+- [Sumit Kumar Mishra](https://github.com/sumitmishra27)
