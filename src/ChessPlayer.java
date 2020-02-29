@@ -1,3 +1,5 @@
+// Class 'ChessPlayer'
+
 import java.util.Scanner;
 
 class ChessPlayer extends Player {
